@@ -9,17 +9,17 @@ playio - control the interaction with a UN*X text-based application using a very
 **playio** executes the indicated _PROGRAM_, connecting to _PROGRAM_'s standard I/O streams (stdin, and stdout/stderr combined).<br/>
 Any _PROGRAM_OPTIONS_ that are added after _PROGRAM_ are passed to _PROGRAM_ unchanged.
 
-**playio** reads a script from standard input that controls how _PROGRAM_'s standard input and output are handled. Program execution when end of file is reached on **playio**'s own standard input. When this happens, _PROGRAM_ standard output is read until it ends.
+**playio** reads a script from standard input that controls how _PROGRAM_'s standard input and output are handled. Program execution ends when end of file is reached on **playio**'s own standard input. When this happens, _PROGRAM_'s standard output is read until it ends.
 
 **playio** was originally written as a support tool for a specific solution in the [github.com/PlummersSoftwareLLC/Primes](https://github.com/PlummersSoftwareLLC/Primes) project, but may serve other purposes as well.
 
 ## Scripting language
 ### General format
-The **playio** scripting language consists of one or more lines. Each line contains a one-letter commands. All commands accept a textual parameter that consists of whatever else is on the line, including any trailing whitespace. In all cases but one, the parameter itself is optional and the command's behavior depends on whether it is present or not.
+A **playio** script consists of one or more lines. Each line contains a one-letter command. All commands accept a textual parameter that consists of whatever else is on the line, including any trailing whitespace. In all cases but one, the parameter itself is optional and the command's behavior depends on whether it is present or not.
 
 ### Commands
 - **f** [_TEXT_]<br/>
-  Read one line of _PROGRAM_'s standard output or, if _TEXT_ has been specified, read lines from _PROGRAM_'s standard output until one is read that contains _TEXT_.
+  Read one line of _PROGRAM_'s standard output or, if _TEXT_ has been specified, read lines from _PROGRAM_'s standard output until one is read that contains _TEXT_. If no output is available, this command waits until it is.
 
 - **o** [_TEXT_]<br/>
   Output _TEXT_ to **playio** standard output. If no _TEXT_ is specified, output the last line read from _PROGRAM_'s standard output with the **f** command.

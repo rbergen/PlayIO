@@ -1,4 +1,5 @@
 # PlayIO
+![CI](https://github.com/rbergen/PlayIO/actions/workflows/CI.yml/badge.svg)
 ## Name
 playio - control the interaction with a UN*X text-based application using a very simple scripting language
 

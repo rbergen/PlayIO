@@ -3,15 +3,22 @@
 playio - control the interaction with a UN*X text-based application using a very simple scripting language
 
 ## Synopsis
-**playio** _PROGRAM_ [_PROGRAM_OPTIONS_]
+**playio** _PROGRAM_ [_PROGRAM_OPTIONS_]<br/>
+**playio** -V
 
 ## Description
 **playio** executes the indicated _PROGRAM_, connecting to _PROGRAM_'s standard I/O streams (stdin, and stdout/stderr combined).<br/>
 Any _PROGRAM_OPTIONS_ that are added after _PROGRAM_ are passed to _PROGRAM_ unchanged.
 
-**playio** reads a script from standard input that controls how _PROGRAM_'s standard input and output are handled. Program execution ends when end of file is reached on **playio**'s own standard input. When this happens, _PROGRAM_'s standard output is read until it ends.
+**playio** reads a script from standard input that controls how _PROGRAM_'s standard input and output are handled. Program execution ends when either:
+- end of file is reached on **playio**'s own standard input. When this happens, _PROGRAM_'s standard output is read until it ends.
+- _PROGRAM_ ends and a **w** script command is executed.
 
 **playio** was originally written as a support tool for a specific solution in the [github.com/PlummersSoftwareLLC/Primes](https://github.com/PlummersSoftwareLLC/Primes) project, but may serve other purposes as well.
+
+## Options
+- -V<br/>
+  Print the version number of **playio** to standard output.
 
 ## Scripting language
 ### General format
@@ -19,7 +26,7 @@ A **playio** script consists of one or more lines. Each line contains a one-lett
 
 ### Commands
 - **f** [_TEXT_]<br/>
-  Read one line of _PROGRAM_'s standard output or, if _TEXT_ has been specified, read lines from _PROGRAM_'s standard output until one is read that contains _TEXT_. If no output is available, this command waits until it is.
+  Read one line of _PROGRAM_'s standard output or, if _TEXT_ has been specified, read lines from _PROGRAM_'s standard output until one is read that contains _TEXT_. If no output is available, this command waits unless end of file is reached.
 
 - **o** [_TEXT_]<br/>
   Output _TEXT_ to **playio** standard output. If no _TEXT_ is specified, output the last line read from _PROGRAM_'s standard output with the **f** command.
@@ -35,6 +42,7 @@ A **playio** script consists of one or more lines. Each line contains a one-lett
 
 ## Error conditions
 Simply put, once the pipes between **playio** and _PROGRAM_ have been setup and _PROGRAM_ is running, **playio** simply ignores whatever it doesn't understand.<br/>
+If _PROGRAM_ cannot be found as an executable, **playio** will still execute the script until its end, or until a **w** command is executed. 
 **playio** can hang when it's waiting for a line of output that contains a specific text, and _PROGRAM_ is waiting for input.
 
 ## Building

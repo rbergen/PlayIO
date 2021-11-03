@@ -11,6 +11,10 @@
 #define PIPE_READ   0
 #define PIPE_WRITE  1
 
+#define VERSION_MAJOR   1
+#define VERSION_MINOR   0
+#define VERSION_PATCH   0
+
 int hascmdparam(const char *str);
 char *getcmdparam(char *str);
 char *clipnewline(char *str);
@@ -19,6 +23,18 @@ void runscript(int childStdinFD, int childStdoutFD);
 const char newline = '\n';
 
 int main(int argc, const char* argv[]) {
+    if (argc < 2) {
+        printf("Usage:\n"); 
+        printf("%s <program> [program options]\n", argv[0]);
+        printf("%s -V\n", argv[0]);
+        return errno;
+    }
+
+    if (!strcmp(argv[1],"-V")) {
+        printf("PlayIO version %d.%d.%d\n", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
+        return 0;
+    }
+
     int stdinPipe[2];
     if (pipe(stdinPipe) < 0) {
         perror("allocating pipe for child input redirect");

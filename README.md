@@ -43,7 +43,7 @@ A **playio** script consists of one or more lines. Each line contains a one-lett
 
 ## Error conditions
 Simply put, once the pipes between **playio** and _PROGRAM_ have been setup and _PROGRAM_ is running, **playio** simply ignores whatever it doesn't understand.<br/>
-If _PROGRAM_ cannot be found as an executable, **playio** will still execute the script until its end, or until a **w** command is executed. 
+If _PROGRAM_ cannot be found as an executable, **playio** will still execute the script until its end, or until a **w** command is executed.<br/> 
 **playio** can hang when it's waiting for a line of output that contains a specific text, and _PROGRAM_ is waiting for input.
 
 ## Building

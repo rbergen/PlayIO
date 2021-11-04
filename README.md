@@ -30,7 +30,7 @@ A **playio** script consists of one or more lines. Each line contains a one-lett
   Read one line of _PROGRAM_'s standard output or, if _TEXT_ has been specified, read lines from _PROGRAM_'s standard output until one is read that contains _TEXT_. If no output is available, this command waits unless end of file is reached.
 
 - **o** [_TEXT_]<br/>
-  Output _TEXT_ to **playio** standard output. If no _TEXT_ is specified, output the last line read from _PROGRAM_'s standard output with the **f** command.
+  Output _TEXT_ to **playio** standard output. If no _TEXT_ is specified, output the last line read from _PROGRAM_'s standard output through the use of the **f** command.
 
 - **p** _SECONDS_<br/>
   Pause script processing for _SECONDS_ seconds. Fractional numbers are supported.

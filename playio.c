@@ -15,7 +15,7 @@
 
 #define VERSION_MAJOR   1
 #define VERSION_MINOR   1
-#define VERSION_PATCH   2
+#define VERSION_PATCH   3
 
 int hascmdparam(const char *str);
 char *getcmdparam(char *str);
@@ -116,11 +116,12 @@ int main(int argc, const char* argv[]) {
     }
     else {
         // failed to create child
+        perror("creating child process");
+
         close(stdinPipe[PIPE_READ]);
         close(stdinPipe[PIPE_WRITE]);
         close(stdoutPipe[PIPE_READ]);
         close(stdoutPipe[PIPE_WRITE]);
-        perror("creating child process");
 
         return 1;
     }

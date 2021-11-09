@@ -15,7 +15,7 @@
 
 #define VERSION_MAJOR   1
 #define VERSION_MINOR   1
-#define VERSION_PATCH   1
+#define VERSION_PATCH   2
 
 int hascmdparam(const char *str);
 char *getcmdparam(char *str);
@@ -192,7 +192,7 @@ void runscript(int childStdinFD, int childStdoutFD) {
             // pause for a specified number of seconds; fractional numbers are supported
             case 'p': {
                 if (!hascmdparam(stdinLine))
-                    continue;
+                    break;
 
                 double duration = atof(getcmdparam(stdinLine));
                 struct timespec tms = {

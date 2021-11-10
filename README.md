@@ -16,7 +16,7 @@ Any _PROGRAM_OPTIONS_ that are on the command line after _PROGRAM_ are passed to
 **playio** was originally written as a support tool for a specific solution in the [github.com/PlummersSoftwareLLC/Primes](https://github.com/PlummersSoftwareLLC/Primes) project, but may serve other purposes as well.
 
 ## Options
-- -V<br/>
+- **-V**<br/>
   Print the version number of **playio** to standard output.
 
 ## Scripting Language

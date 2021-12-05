@@ -110,6 +110,8 @@ int main(int argc, const char* argv[]) {
     }
     else if (childPid > 0) {
         // parent continues here
+
+        // ignore broken pipes; we're sticking to our script
         signal(SIGPIPE, SIG_IGN);
 
         // close unused file descriptors, these are for child only
